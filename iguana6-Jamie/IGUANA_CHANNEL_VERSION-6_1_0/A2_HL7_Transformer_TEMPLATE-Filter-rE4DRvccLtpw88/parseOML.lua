@@ -9,12 +9,11 @@ function parseOML(msg)
    -- Check order control early
    local orderControl = msg.ORC[1]:S()
 
-   -- Skip NW orders that don't have a barcode (no SPM segment or empty SPM.2)
-   if orderControl == "NW" then
-      if not msg.SPM or not msg.SPM[1] or not msg.SPM[1][2] or msg.SPM[1][2]:S() == "" then
-         iguana.logInfo('Skipping NW order without barcode/SPM segment: ' .. msg.OBR[18]:S())
-         return nil
-      end
+   -- Skip messages that don't have a barcode (no SPM segment or empty SPM.2)
+   -- This is required for processing slides
+   if not msg.SPM or not msg.SPM[1] or not msg.SPM[1][2] or msg.SPM[1][2]:S() == "" then
+      iguana.logInfo('Skipping order without barcode/SPM segment: ' .. msg.OBR[18]:S() .. ' (Order Control: ' .. orderControl .. ')')
+      return nil
    end
 
    -- Get accession date from ORC.15
@@ -34,6 +33,12 @@ function parseOML(msg)
 
    -- Parse the slide ID using barcodeUtils
    local parsedBarcode = bu.parseBarcode(slideId, gc.BARCODE_FORMAT, gc.BARCODE_COMPONENTS)
+
+   -- Validate parsed barcode
+   if not parsedBarcode or not parsedBarcode.accessionId or not parsedBarcode.slide then
+      iguana.logError('Failed to parse barcode: ' .. slideId .. ' (Order Control: ' .. orderControl .. ')')
+      return nil
+   end
 
    -- Construct barcode: accessionId-block-slide (e.g., "SJ18-25-A-1")
    local barcode = parsedBarcode.accessionId .. '-' .. blockName .. '-' .. parsedBarcode.slide
