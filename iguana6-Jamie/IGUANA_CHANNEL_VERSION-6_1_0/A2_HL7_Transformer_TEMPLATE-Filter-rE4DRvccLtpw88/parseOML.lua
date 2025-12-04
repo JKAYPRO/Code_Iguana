@@ -101,8 +101,8 @@ function parseOML(msg)
    -- Construct barcode: accessionId-block-slide (e.g., "SJ18-25-A-1")
    local barcode = parsedBarcode.accessionId .. '-' .. blockName .. '-' .. parsedBarcode.slide
 
-   -- Use blockName as blockKey
-   local blockKey = mapBlockKey({block = blockName})
+   -- Use blockName and partName as blockKey
+   local blockKey = mapBlockKey({part = partName, block = blockName})
 
    -- Handle order control for cancellations
    if orderControl == "CA" then
