@@ -74,21 +74,13 @@ function parseOML(msg)
       return nil
    end
 
-   -- Get slide ID from SPM.2 (format: "A70-25;6")
+   -- Get slide ID from SPM.2 (format: "A70-25;6" or "A71-25;1")
    local slideId = msg.SPM[1][2]:S()
 
    if slideId == "" then
       iguana.logInfo('Empty SPM.2, skipping slide processing: ' .. accessionId .. ' (Order Control: ' .. orderControl .. ')')
       return nil
    end
-
-   -- Extract part and block from SPM.4
-   local blockName = msg.SPM[1][4][1]:S()  -- SPM.4.1 = "C"
-   local partName = msg.SPM[1][4][4]:S()   -- SPM.4.4 = "3"
-
-   -- Set defaults if empty
-   blockName = blockName ~= "" and blockName or "A"
-   partName = partName ~= "" and partName or "1"
 
    -- Parse the slide ID using barcodeUtils
    local parsedBarcode = bu.parseBarcode(slideId, gc.BARCODE_FORMAT, gc.BARCODE_COMPONENTS)
@@ -99,33 +91,49 @@ function parseOML(msg)
       return nil
    end
 
-   -- Construct blockKey as part-block (e.g., "3-C")
-   local blockKey = partName .. '-' .. blockName
-
-   -- Construct barcode: accessionId-blockKey-slide (e.g., "A70-25-3-C-6")
-   local barcode = parsedBarcode.accessionId .. '-' .. blockKey .. '-' .. parsedBarcode.slide
-
-   -- Handle order control for cancellations
+   -- Handle CA (cancellation) - process early as it may not have SPM.4
    if orderControl == "CA" then
+      iguana.logInfo('Processing CA (cancel) order for: ' .. accessionId)
+
+      -- Get block from OBR.25 for CA messages (SPM.4 may not exist)
+      local blockCA = msg.OBR[25]:S()
+      local blockNameCA = blockCA ~= "" and blockCA or "A"
+
+      -- Default part to "1" for CA messages
+      local partNameCA = "1"
+
+      -- Construct blockKey and barcode for cancellation
+      local blockKeyCA = partNameCA .. '-' .. blockNameCA
+      local barcodeCA = parsedBarcode.accessionId .. '-' .. blockKeyCA .. '-' .. parsedBarcode.slide
+
       return {
-         messageType = 'cancel',
+         messageType = 'delete',  -- Use 'delete' to trigger slide deletion
          options = {
-            push = true,
-            delete = true,
-            preventDeletionOfSlidesWithImages = true,
+            preventDeletionOfSlidesWithImages = true,  -- Preserve slides with images
             logLevel = 'logInfo'
          },
          case = {
             accessionId = accessionId,
             labSiteId = gc.LAB_SITE,
-            cancellationDate = accDate:ISO8601(offset),
-            cancellationReason = "Order cancelled",
-            parts = {{
-               slides = {{ barcode = barcode }}
-            }}
+            patientDob = nil,  -- Not needed for deletion
+            slides = {{ barcode = barcodeCA }}  -- Specify slide to delete
          }
       }
    end
+
+   -- Extract part and block from SPM.4 (for NW and other non-CA messages)
+   local blockName = msg.SPM[1][4][1]:S()  -- SPM.4.1 = "C"
+   local partName = msg.SPM[1][4][4]:S()   -- SPM.4.4 = "3"
+
+   -- Set defaults if empty
+   blockName = blockName ~= "" and blockName or "A"
+   partName = partName ~= "" and partName or "1"
+
+   -- Construct blockKey as part-block (e.g., "3-C")
+   local blockKey = partName .. '-' .. blockName
+
+   -- Construct barcode: accessionId-blockKey-slide (e.g., "A70-25-3-C-6")
+   local barcode = parsedBarcode.accessionId .. '-' .. blockKey .. '-' .. parsedBarcode.slide
 
    local j = {} -- create blank JSON placeholder
 
