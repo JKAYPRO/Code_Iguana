@@ -1,0 +1,16 @@
+<channel
+   name="H1_Create Attachment Webhook"
+   guid="6DE3CD609F3C36C03169805B25E91C77"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="false">
+   <to_channel>
+   </to_channel>
+   <from_http
+      type="mapper"
+      guid="H1_Create_Attachment_Webhook-FromHTTP-ju85BSq7QST34T"
+      commit_id="a02645c6a33724fec3ee2546d84e79a489ecd250"
+      commit_comment="Initial commit"
+      mapper_url_path="createAttachment"/>
+</channel>

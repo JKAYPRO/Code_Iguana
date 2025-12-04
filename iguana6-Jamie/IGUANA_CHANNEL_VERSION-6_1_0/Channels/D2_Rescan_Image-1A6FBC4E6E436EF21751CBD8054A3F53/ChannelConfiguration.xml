@@ -1,0 +1,19 @@
+<channel
+   name="D2_Rescan Image"
+   guid="1A6FBC4E6E436EF21751CBD8054A3F53"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="false">
+   <to_mapper
+      guid="D2_Rescan_Image-To-dTfkqu9l4IVJma"
+      commit_id="57a03f230d13a111a15cd2e2678bc8fae7f01f13"
+      commit_comment="Use caseStatus function to determine case stage">
+      <dequeue_list>
+         <dequeue
+            source_name="D1_Rescan Image Webhook"
+            dequeue_guid="93D20D03409287F634944976FE9C9E90"/>
+      </dequeue_list>
+   </to_mapper>
+   <from_channel/>
+</channel>

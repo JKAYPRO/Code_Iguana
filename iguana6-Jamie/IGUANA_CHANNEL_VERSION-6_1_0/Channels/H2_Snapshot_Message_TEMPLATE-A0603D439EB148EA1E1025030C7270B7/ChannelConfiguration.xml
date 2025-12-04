@@ -1,0 +1,30 @@
+<channel
+   name="H2_Snapshot Message TEMPLATE"
+   guid="A0603D439EB148EA1E1025030C7270B7"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="true">
+   <to_channel>
+      <dequeue_list>
+         <dequeue
+            source_name="H1_Create Attachment Webhook"
+            dequeue_guid="E2F8FC15190A254EBFCE5AE7C63E485A"/>
+      </dequeue_list>
+   </to_channel>
+   <from_channel/>
+   <message_filter
+      filter_after_logging="false"
+      log_pre_post_filter_message="true"
+      keep_vmd_updated="false"
+      original_vmd_path=""
+      filter_vmd_path=""
+      transformation_mode="0"
+      scripted_transformation_configuration_name="default"
+      error_handling="0"
+      use_translator_filter="true"
+      translator_guid="H2_Snapshot_Message_TEMPLATE-Filter-C7lKJFuRWCvUvj"
+      translator_commit_id="4f0fea249ef58ccf932a127d6f8cdf852d2e6400"
+      translator_commit_comment="Remove iasAPI and updated to pull in slide information based on the slide name">
+   </message_filter>
+</channel>

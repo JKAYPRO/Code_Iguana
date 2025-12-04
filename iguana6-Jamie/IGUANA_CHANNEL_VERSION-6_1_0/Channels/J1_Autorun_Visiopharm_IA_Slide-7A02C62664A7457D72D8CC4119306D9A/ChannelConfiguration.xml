@@ -1,0 +1,19 @@
+<channel
+   name="J1_Autorun Visiopharm IA Slide"
+   guid="7A02C62664A7457D72D8CC4119306D9A"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="false">
+   <to_mapper
+      guid="J1_Autorun_Visiopharm_IA-To-lUcAx2stksHKZX"
+      commit_id="d9904fba0f10b68d96032068f3ab14eb8bececd3"
+      commit_comment="Initial commit">
+      <dequeue_list>
+         <dequeue
+            source_name="C1_PatchImageWebhook"
+            dequeue_guid="45681E6E3DED4C126E562F4CC0118D0F"/>
+      </dequeue_list>
+   </to_mapper>
+   <from_channel/>
+</channel>

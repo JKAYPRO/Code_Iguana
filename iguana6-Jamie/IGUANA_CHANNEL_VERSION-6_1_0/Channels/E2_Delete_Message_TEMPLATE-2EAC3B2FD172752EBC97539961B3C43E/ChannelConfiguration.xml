@@ -1,0 +1,30 @@
+<channel
+   name="E2_Delete Message TEMPLATE"
+   guid="2EAC3B2FD172752EBC97539961B3C43E"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="true">
+   <to_channel>
+      <dequeue_list>
+         <dequeue
+            source_name="E1_Delete Slide Webhook"
+            dequeue_guid="1D6F3BB3BB2AF7E9B417123097B1B137"/>
+      </dequeue_list>
+   </to_channel>
+   <from_channel/>
+   <message_filter
+      filter_after_logging="false"
+      log_pre_post_filter_message="true"
+      keep_vmd_updated="false"
+      original_vmd_path=""
+      filter_vmd_path=""
+      transformation_mode="0"
+      scripted_transformation_configuration_name="default"
+      error_handling="0"
+      use_translator_filter="true"
+      translator_guid="E2_Delete_Contextual_Launch-Filter-Y23YR7XSx5Za74"
+      translator_commit_id="8f1919e7a61084ef3a862c44a52085d6ecbf2495"
+      translator_commit_comment="Global Config update">
+   </message_filter>
+</channel>

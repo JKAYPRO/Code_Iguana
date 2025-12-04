@@ -1,0 +1,25 @@
+{
+    "LocalDependencies": [
+        "mapOutboundMessage.lua"
+    ],
+    "LuaDependencies": [
+        "concentriqAPI",
+        "date.convertAndFormatDatetime",
+        "date.getTimezoneOffset",
+        "date.parse",
+        "date.processTimestamp",
+        "date.timezoneOffsetToNumber",
+        "globalConfig",
+        "retry",
+        "tableUtils"
+    ],
+    "OtherDependencies": [
+        "HNL_wZID_02282024_V3.vmd"
+    ],
+    "timestamp": "1732167567",
+    "version_info": {
+        "build": 0,
+        "major": 6,
+        "minor": 0
+    }
+}

@@ -1,0 +1,24 @@
+<channel
+   name="X_Webhook Resends"
+   guid="C1C52E6FD210931DCC9D309267DA251F"
+   description=""
+   start_automatically="true"
+   logging_level="1"
+   use_message_filter="false">
+   <to_mapper
+      guid="X_Webhook_Resends-To-FGIcsX02uRnLfn"
+      commit_id="7a2db580e3296f57d3b33a3db0eba71579ea7119"
+      commit_comment="Add getCaseDetailsAll">
+      <dequeue_list>
+         <dequeue
+            source_name="self"
+            dequeue_guid="7E0E5F664BE85E9326897070E635A27D"/>
+      </dequeue_list>
+   </to_mapper>
+   <from_mapper
+      guid="X_Webhook_Resends-From-giLoovdpCyWZsE"
+      commit_id="7eeade89b5a110f14ffe9251d07ec2e5615523be"
+      commit_comment="Add log levels"
+      poll_time="10000">
+   </from_mapper>
+</channel>

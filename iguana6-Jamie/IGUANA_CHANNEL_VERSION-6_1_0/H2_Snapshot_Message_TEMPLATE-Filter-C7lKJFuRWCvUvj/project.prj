@@ -1,0 +1,26 @@
+{
+    "LocalDependencies": [
+        "mapOutboundMessage.lua"
+    ],
+    "LuaDependencies": [
+        "concentriqAPI",
+        "date.convertAndFormatDatetime",
+        "date.getTimezoneOffset",
+        "date.parse",
+        "date.processTimestamp",
+        "date.timezoneOffsetToNumber",
+        "globalConfig",
+        "retry",
+        "tableUtils"
+    ],
+    "OtherDependencies": [
+        "NEW_OML_0621_v2.vmd",
+        "TCH_OML_06032024.vmd"
+    ],
+    "timestamp": "1732648076",
+    "version_info": {
+        "build": 0,
+        "major": 6,
+        "minor": 0
+    }
+}

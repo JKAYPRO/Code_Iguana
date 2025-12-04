@@ -1,0 +1,25 @@
+<channel
+   name="H3_Snapshot to LIS TEMPLATE"
+   guid="EB146CBD4BACA59728536D10371BC74D"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="false">
+   <to_file
+      output_dir=""
+      write_to_separate_file="false"
+      output_single_filename=""
+      use_prepended_info_as_filename="false"
+      output_file_id_type="0"
+      output_filename_mask=""
+      temp_file_extension="tmp"
+      count_of_padding_digit="5"
+      sftp_authentication_method="user_password">
+      <dequeue_list>
+         <dequeue
+            source_name="H2_Snapshot Message TEMPLATE"
+            dequeue_guid="A080DF1D74BA174704B5367FDD729BDA"/>
+      </dequeue_list>
+   </to_file>
+   <from_channel/>
+</channel>

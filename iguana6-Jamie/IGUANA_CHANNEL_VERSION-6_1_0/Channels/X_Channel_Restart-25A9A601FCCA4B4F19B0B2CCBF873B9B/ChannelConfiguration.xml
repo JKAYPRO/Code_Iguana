@@ -1,0 +1,24 @@
+<channel
+   name="X_Channel Restart"
+   guid="25A9A601FCCA4B4F19B0B2CCBF873B9B"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="false">
+   <to_mapper
+      guid="X_Channel_Restart-To-r1RkCWj1O6kmB4"
+      commit_id="f7df0eaf7be5e68c367b5b058ed43070cbabc5fc"
+      commit_comment="Import Translators: Imported from TCH">
+      <dequeue_list>
+         <dequeue
+            source_name="self"
+            dequeue_guid="B09B84D752639345931952600C4580CD"/>
+      </dequeue_list>
+   </to_mapper>
+   <from_mapper
+      guid="X_Channel_Restart-From-jUMQPYOI4GF4gp"
+      commit_id="dc11191b520f02548710a3e00023a1a8de9020ee"
+      commit_comment="Import Translators: Import TCH global config with alert example"
+      poll_time="60000">
+   </from_mapper>
+</channel>

@@ -1,0 +1,25 @@
+<channel
+   name="E3_HL7 to LIS TEMPLATE"
+   guid="36AE6206BDA2691A3E84A0E309C0970E"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="false">
+   <to_file
+      output_dir=""
+      write_to_separate_file="false"
+      output_single_filename=""
+      use_prepended_info_as_filename="false"
+      output_file_id_type="0"
+      output_filename_mask=""
+      temp_file_extension="tmp"
+      count_of_padding_digit="5"
+      sftp_authentication_method="user_password">
+      <dequeue_list>
+         <dequeue
+            source_name="E2_Delete Message TEMPLATE"
+            dequeue_guid="AACA4544D71BFB4EA2ECE1909125227A"/>
+      </dequeue_list>
+   </to_file>
+   <from_channel/>
+</channel>

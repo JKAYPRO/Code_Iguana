@@ -1,0 +1,16 @@
+<channel
+   name="C1_Patch Image Webhook"
+   guid="6EFD877AC3E27A0D725CAC2C04D6D4DB"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="false">
+   <to_channel>
+   </to_channel>
+   <from_http
+      type="mapper"
+      guid="C1_Patch_Image_Webhook-FromHTTP-h8dJVX7q5MMqvU"
+      commit_id="f2894bec817481738636dd4b32aafccb0cc9bade"
+      commit_comment="Initial commit"
+      mapper_url_path="patchImage"/>
+</channel>

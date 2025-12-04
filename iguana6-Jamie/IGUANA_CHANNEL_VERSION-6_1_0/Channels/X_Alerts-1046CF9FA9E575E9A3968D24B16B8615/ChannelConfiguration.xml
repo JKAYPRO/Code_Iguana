@@ -1,0 +1,24 @@
+<channel
+   name="X_Alerts"
+   guid="1046CF9FA9E575E9A3968D24B16B8615"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="false">
+   <to_mapper
+      guid="X_Alerts-To-55JfNnn5SIBbrP"
+      commit_id="dc11191b520f02548710a3e00023a1a8de9020ee"
+      commit_comment="Import Translators: Import TCH global config with alert example">
+      <dequeue_list>
+         <dequeue
+            source_name="self"
+            dequeue_guid="95F9D95C9DDB656F726AEFE4AEE52C5C"/>
+      </dequeue_list>
+   </to_mapper>
+   <from_mapper
+      guid="X_Alerts-From-mznC4KlXXUBlDc"
+      commit_id="dc11191b520f02548710a3e00023a1a8de9020ee"
+      commit_comment="Import Translators: Import TCH global config with alert example"
+      poll_time="1800000">
+   </from_mapper>
+</channel>

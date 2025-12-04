@@ -1,0 +1,8 @@
+{
+    "Samples": [
+        {
+            "Message": "{\r    \"messageType\": \"upsert\",\r    \"options\": {\r        \"deleteCaseIfNoSlidesLeft\": true,\r        \"assignedUserIdLookupField\": \"email\"\r    },\r    \"case\": {\r        \"accessionDate\": \"2024-07-06T10:30:00-07:00\",\r        \"accessionId\": \"TST24-001\",\r        \"assignedUserId\": \"jacob.blaylock@proscia.com\",\r        \"caseStage\": \"\",\r        \"labSiteId\": 2,\r        \"patientDob\": \"1950-10-10\",\r        \"patientLastName\": \"PROSCIA\",\r        \"patientFirstName\": \"TEST\",\r        \"patientMrn\": \"123456\",\r        \"patientSex\": \"M\",\r        \"patientGenderIdentity\": \"M\",\r        \"specimenCategoryId\": \"SpecimenCategory\",\r        \"parts\": [\r            {\r                \"blocks\": [\r                    {\r                        \"key\": \"A1\",\r                        \"name\": \"1\"\r                    }\r                ],\r                \"name\": \"A\",\r                \"procedureId\": \"Biopsy\",\r                \"specimenDescription\": \"Specimen Description\",\r                \"specimenId\": \"SpecimenCode\",\r                \"slides\": [\r                    {\r                        \"barcode\":\"987654321\",\r                        \"blockKey\":\"A1\",\r                        \"name\":\"TST24-001 A1-1\",\r                        \"stainId\":\"H&E\",\r                    }\r                ],\r            }\r        ],\r    \"udf\": \r        {\r            \"icd\": \"A15.0,B10.01\"\r        }\r    }\r}",
+            "Name": "TST24-001 A1-1"
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+<channel
+   name="A5_Delete Slides"
+   guid="CBFE6E867263910EB11773E93C0C80ED"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="true">
+   <to_mapper
+      guid="A5_Delete_Slides-To-9HfTM6A8BFVK49"
+      commit_id="d63ed22aec95a01c3d91d0b9b2f254741e31e16a"
+      commit_comment="Get individual user via the user id">
+      <dequeue_list>
+         <dequeue
+            source_name="A2_HL7 Transformer TEMPLATE"
+            dequeue_guid="2C47DBCA8E7316C696F51B6E084118F1"/>
+      </dequeue_list>
+   </to_mapper>
+   <from_channel/>
+   <message_filter
+      filter_after_logging="true"
+      log_pre_post_filter_message="true"
+      keep_vmd_updated="false"
+      original_vmd_path=""
+      filter_vmd_path=""
+      transformation_mode="0"
+      scripted_transformation_configuration_name="default"
+      error_handling="0"
+      use_translator_filter="true"
+      translator_guid="A5_Delete_Slides-Filter-FAyG02D5CiuXBY"
+      translator_commit_id="b038b649bc138546fba72c8ddbbcf59632d3d126"
+      translator_commit_comment="Initial commit">
+   </message_filter>
+</channel>

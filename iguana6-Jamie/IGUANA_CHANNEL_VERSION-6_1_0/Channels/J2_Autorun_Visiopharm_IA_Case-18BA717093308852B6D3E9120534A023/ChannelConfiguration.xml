@@ -1,0 +1,19 @@
+<channel
+   name="J2_Autorun Visiopharm IA Case"
+   guid="18BA717093308852B6D3E9120534A023"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="false">
+   <to_mapper
+      guid="Visiopharm_Autorun-To-7rIUrfFWCQBE6z"
+      commit_id="7edcaab240c6354de2ef5fd533852f62177641de"
+      commit_comment="Convert to processing a single slide instead of a whole case.">
+      <dequeue_list>
+         <dequeue
+            source_name="C1_PatchImageWebhook"
+            dequeue_guid="CF85DFEDF3FDAE4371D14DF3ED677C84"/>
+      </dequeue_list>
+   </to_mapper>
+   <from_channel/>
+</channel>

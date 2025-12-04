@@ -1,0 +1,16 @@
+{
+    "Samples": [
+        {
+            "Message": "{\"event\": {\r                \"id\": \"110eb918-93c4-4dd2-90a1-9540a135842f\",\r                \"type\": \"create\",\r                \"userId\": 131,\r                \"current\": {\r                    \"id\": 40,\r                    \"fileSize\": 2776556,\r                    \"filename\": \"Tieto_Case_20240920_3-testfile15.ndpi-[33982,369,16272,369]10.8x.tiff\",\r                    \"createdAt\": \"2024-11-26T07:17:23.394Z\",\r                    \"createdBy\": 131,\r                    \"updatedAt\": \"2024-11-26T07:17:23.394Z\",\r                    \"isUploaded\": false,\r                    \"storageKey\": \"attachments/e8af819e-9dba-4917-a197-8ed52c6c0c35/Tieto_Case_20240920_3-testfile15.ndpi-[33982,369,16272,369]10.8x.tiff\",\r                    \"lastUpdatedBy\": 131\r                },\r                \"previous\": null,\r                \"timestamp\": \"2024-11-26T07:17:23.430Z\",\r                \"resourceId\": 40,\r                \"resourceType\": \"Attachment\"\r            }}",
+            "Name": "Message 1"
+        },
+        {
+            "Message": "{\r\"event\": {\r                \"id\": \"ab457f8e-22b7-4888-b7c8-92d717c773e4\",\r                \"type\": \"create\",\r                \"userId\": 131,\r                \"current\": {\r                    \"id\": 41,\r                    \"fileSize\": 279309,\r                    \"filename\": \"Tieto_Case_20240920_3-testfile17.ndpi-[36244,324,13502,324]18.5x.png\",\r                    \"createdAt\": \"2024-11-26T15:33:03.498Z\",\r                    \"createdBy\": 131,\r                    \"updatedAt\": \"2024-11-26T15:33:03.498Z\",\r                    \"isUploaded\": false,\r                    \"storageKey\": \"attachments/e4ca8dbe-02c2-40c1-91a5-ff450d054ab2/Tieto_Case_20240920_3-testfile17.ndpi-[36244,324,13502,324]18.5x.png\",\r                    \"lastUpdatedBy\": 131\r                },\r                \"previous\": null,\r                \"timestamp\": \"2024-11-26T15:33:03.523Z\",\r                \"resourceId\": 41,\r                \"resourceType\": \"Attachment\"\r            }\r}",
+            "Name": "Message 2"
+        },
+        {
+            "Message": "{\"event\": {\r                \"id\": \"05dbdec7-cf7a-4d31-84dc-b99d3bb3b57e\",\r                \"type\": \"create\",\r                \"userId\": 137,\r                \"current\": {\r                    \"id\": 42,\r                    \"fileSize\": 71091,\r                    \"filename\": \"SP23-38567-SP23-38567-A-1-1-[14940,632,14975,632]19.0x.png\",\r                    \"createdAt\": \"2024-11-26T18:31:58.991Z\",\r                    \"createdBy\": 137,\r                    \"updatedAt\": \"2024-11-26T18:31:58.991Z\",\r                    \"isUploaded\": false,\r                    \"storageKey\": \"attachments/98be5c4f-37a6-4486-92e1-21ad5975b64f/SP23-38567-SP23-38567-A-1-1-[14940,632,14975,632]19.0x.png\",\r                    \"lastUpdatedBy\": 137\r                },\r                \"previous\": null,\r                \"timestamp\": \"2024-11-26T18:31:59.002Z\",\r                \"resourceId\": 42,\r                \"resourceType\": \"Attachment\"\r            }\r}",
+            "Name": ""
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "LocalDependencies": [
+        "mapCaseDetails.lua",
+        "mapImages.lua"
+    ],
+    "LuaDependencies": [
+        "concentriqAPI",
+        "date.getTimezoneOffset",
+        "globalConfig",
+        "retry",
+        "tableUtils"
+    ],
+    "OtherDependencies": [],
+    "timestamp": "1762201385",
+    "version_info": {
+        "build": 0,
+        "major": 6,
+        "minor": 0
+    }
+}

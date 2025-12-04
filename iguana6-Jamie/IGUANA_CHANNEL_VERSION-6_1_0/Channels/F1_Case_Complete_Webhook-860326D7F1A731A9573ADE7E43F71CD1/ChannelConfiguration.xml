@@ -1,0 +1,16 @@
+<channel
+   name="F1_Case Complete Webhook"
+   guid="860326D7F1A731A9573ADE7E43F71CD1"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="false">
+   <to_channel>
+   </to_channel>
+   <from_http
+      type="mapper"
+      guid="F1_Case_Complete_Webhook-FromHTTP-SEAgeQMmVoDDZE"
+      commit_id="6ccfbb61e884f43761c38050f6af5a8bf932150e"
+      commit_comment="Initial commit"
+      mapper_url_path="completeCase"/>
+</channel>

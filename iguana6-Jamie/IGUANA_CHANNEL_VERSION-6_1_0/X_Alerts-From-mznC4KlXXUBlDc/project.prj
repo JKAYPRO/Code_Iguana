@@ -1,0 +1,18 @@
+{
+    "LocalDependencies": [
+        "logWebhook.lua"
+    ],
+    "LuaDependencies": [
+        "globalConfig",
+        "retry",
+        "simpleTable",
+        "tableUtils"
+    ],
+    "OtherDependencies": [],
+    "timestamp": "1732167003",
+    "version_info": {
+        "build": 0,
+        "major": 6,
+        "minor": 0
+    }
+}

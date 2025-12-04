@@ -1,0 +1,25 @@
+<channel
+   name="A2_Barcode Parser TEMPLATE"
+   guid="DD81453A61A45174709AEF0608BF1E66"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="true">
+   <to_channel>
+   </to_channel>
+   <from_channel/>
+   <message_filter
+      filter_after_logging="true"
+      log_pre_post_filter_message="true"
+      keep_vmd_updated="false"
+      original_vmd_path=""
+      filter_vmd_path=""
+      transformation_mode="0"
+      scripted_transformation_configuration_name="default"
+      error_handling="0"
+      use_translator_filter="true"
+      translator_guid="A2_Barcode_Parser-Filter-ga4HBMe7eR8h20"
+      translator_commit_id="43f2bb5536fbac8493132da052626bc03b8a9227"
+      translator_commit_comment="Added fileUtils">
+   </message_filter>
+</channel>

@@ -1,0 +1,30 @@
+<channel
+   name="G2_Archive Case Msg TEMPLATE"
+   guid="F6A799F7094CE8696173B0EE2A9EE630"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="true">
+   <to_channel>
+      <dequeue_list>
+         <dequeue
+            source_name="G1_Archive Case Webhook"
+            dequeue_guid="E34C4B5497BB9B082E405B12FD19023D"/>
+      </dequeue_list>
+   </to_channel>
+   <from_channel/>
+   <message_filter
+      filter_after_logging="false"
+      log_pre_post_filter_message="true"
+      keep_vmd_updated="false"
+      original_vmd_path=""
+      filter_vmd_path=""
+      transformation_mode="0"
+      scripted_transformation_configuration_name="default"
+      error_handling="0"
+      use_translator_filter="true"
+      translator_guid="G2_Archive_Case_Message-Filter-8u2dzH971LW3pw"
+      translator_commit_id="2437f64dcca88038eabb4af14cc84ad23106074a"
+      translator_commit_comment="Initial commit">
+   </message_filter>
+</channel>

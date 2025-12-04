@@ -1,0 +1,8 @@
+{
+    "Samples": [
+        {
+            "Message": "{\"event\":{\"id\":\"92e19b83-c2a2-4ef2-b848-943760f87ed0\",\"type\":\"update\",\"userId\":6,\"current\":{\"id\":86,\"udf\":{},\"name\":\"DS_A01R_04S.zip\",\"barcode\":\"S23-15962 A1-18\",\"stainId\":3,\"blockKey\":\"\",\"createdAt\":\"2024-06-26T18:57:20.030Z\",\"createdBy\":9,\"updatedAt\":\"2024-08-05T23:02:24.481Z\",\"casePartId\":null,\"orderStatus\":null,\"caseDetailId\":18,\"lastUpdatedBy\":6,\"primaryImageId\":63698,\"rescanRequestedOn\":\"2024-08-05T23:02:24.483Z\",\"rescanRequestedById\":6},\"previous\":{\"updatedAt\":\"2024-08-02T20:01:32.090Z\",\"orderStatus\":null,\"rescanRequestedOn\":null,\"rescanRequestedById\":null},\"timestamp\":\"2024-08-05T23:02:24.492Z\",\"resourceId\":86,\"resourceType\":\"Slide\"},\"webhookId\":3}\r",
+            "Name": "Message 1"
+        }
+    ]
+}

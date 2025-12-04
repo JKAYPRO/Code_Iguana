@@ -1,0 +1,18 @@
+{
+    "LocalDependencies": [
+        "mapCaseDetails.lua",
+        "mapCaseParts.lua"
+    ],
+    "LuaDependencies": [
+        "concentriqAPI",
+        "retry",
+        "tableUtils"
+    ],
+    "OtherDependencies": [],
+    "timestamp": "1732219126",
+    "version_info": {
+        "build": 0,
+        "major": 6,
+        "minor": 0
+    }
+}
