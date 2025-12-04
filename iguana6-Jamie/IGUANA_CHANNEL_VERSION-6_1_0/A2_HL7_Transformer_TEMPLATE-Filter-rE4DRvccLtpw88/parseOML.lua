@@ -107,21 +107,16 @@ function parseOML(msg)
       local barcodeCA = parsedBarcode.accessionId .. '-' .. blockKeyCA .. '-' .. parsedBarcode.slide
 
       return {
-         messageType = 'cancel',
+         messageType = 'delete',  -- Use 'delete' to trigger slide deletion
          options = {
-            push = true,
-            delete = true,
-            preventDeletionOfSlidesWithImages = true,
+            preventDeletionOfSlidesWithImages = true,  -- Preserve slides with images
             logLevel = 'logInfo'
          },
          case = {
             accessionId = accessionId,
             labSiteId = gc.LAB_SITE,
-            cancellationDate = accDate:ISO8601(offset),
-            cancellationReason = "Order cancelled",
-            parts = {{
-               slides = {{ barcode = barcodeCA }}
-            }}
+            patientDob = nil,  -- Not needed for deletion
+            slides = {{ barcode = barcodeCA }}  -- Specify slide to delete
          }
       }
    end
