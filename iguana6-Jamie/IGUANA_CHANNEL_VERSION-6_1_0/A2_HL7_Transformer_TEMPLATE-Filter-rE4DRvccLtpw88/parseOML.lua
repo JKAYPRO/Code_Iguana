@@ -9,21 +9,78 @@ function parseOML(msg)
    -- Check order control early
    local orderControl = msg.ORC[1]:S()
 
-   -- Skip NW orders that don't have a barcode (no SPM segment or empty SPM.2)
-   if orderControl == "NW" then
-      if not msg.SPM or not msg.SPM[1] or not msg.SPM[1][2] or msg.SPM[1][2]:S() == "" then
-         iguana.logInfo('Skipping NW order without barcode/SPM segment: ' .. msg.OBR[18]:S())
-         return nil
-      end
-   end
-
    -- Get accession date from ORC.15
    local accDateStr = msg.ORC[15]:S()
    local accDate = accDateStr ~= "" and accDateStr or os.date('%Y%m%d%H%M%S')
    local offset = tzOffset(accDate:TIME(), gc.DEFAULT_OFFSET, gc.DST_TRANSITIONS)
 
+   -- Get accession ID from OBR.18
+   local accessionId = msg.OBR[18]:S()
+
+   -- Handle XO (change/update order) - these update existing cases without creating slides
+   if orderControl == "XO" then
+      iguana.logInfo('Processing XO (update) order for: ' .. accessionId)
+
+      local j = {}
+      j.messageType = 'caseUpdate'
+      j.options = gc.MESSAGE_OPTIONS
+
+      j.case = {}
+      j.case.accessionId = accessionId
+      j.case.accessionDate = accDate:ISO8601(offset)
+      j.case.labSiteId = gc.LAB_SITE
+
+      -- Patient demographics with safe extraction
+      local dobRaw = msg.PID[7]:S()
+      if dobRaw ~= "" and #dobRaw >= 8 then
+         j.case.patientDob = dobRaw:sub(1,8):DAY('yyyymmdd')
+      end
+
+      local lastName = msg.PID[5][1][1]:S()
+      if lastName ~= "" then
+         j.case.patientLastName = lastName
+      end
+
+      local firstName = msg.PID[5][1][2]:S()
+      if firstName ~= "" then
+         j.case.patientFirstName = firstName
+      end
+
+      local mrn = msg.PID[3][1][1]:S()
+      if mrn ~= "" then
+         j.case.patientMrn = mrn
+      end
+
+      local sexRaw = msg.PID[8][1]:S()
+      if sexRaw ~= "" then
+         j.case.patientSex = sexRaw:sub(1, 1)
+         j.case.patientGenderIdentity = j.case.patientSex
+      end
+
+      return j
+   end
+
+   -- For NW (new order) messages, SPM segment is required
+   if orderControl == "NW" then
+      if not msg.SPM or not msg.SPM[1] or not msg.SPM[1][2] or msg.SPM[1][2]:S() == "" then
+         iguana.logInfo('Skipping NW order without barcode/SPM segment: ' .. accessionId)
+         return nil
+      end
+   end
+
+   -- Check if SPM segment exists for slide processing
+   if not msg.SPM or not msg.SPM[1] or not msg.SPM[1][2] then
+      iguana.logInfo('No SPM segment found, skipping slide processing: ' .. accessionId .. ' (Order Control: ' .. orderControl .. ')')
+      return nil
+   end
+
    -- Get slide ID from SPM.2 (format: "SJ18-25;1")
    local slideId = msg.SPM[1][2]:S()
+
+   if slideId == "" then
+      iguana.logInfo('Empty SPM.2, skipping slide processing: ' .. accessionId .. ' (Order Control: ' .. orderControl .. ')')
+      return nil
+   end
 
    -- Get block from OBR.25
    local block = msg.OBR[25]:S()
@@ -35,14 +92,17 @@ function parseOML(msg)
    -- Parse the slide ID using barcodeUtils
    local parsedBarcode = bu.parseBarcode(slideId, gc.BARCODE_FORMAT, gc.BARCODE_COMPONENTS)
 
+   -- Validate parsed barcode
+   if not parsedBarcode or not parsedBarcode.accessionId or not parsedBarcode.slide then
+      iguana.logError('Failed to parse barcode: ' .. slideId .. ' (Order Control: ' .. orderControl .. ')')
+      return nil
+   end
+
    -- Construct barcode: accessionId-block-slide (e.g., "SJ18-25-A-1")
    local barcode = parsedBarcode.accessionId .. '-' .. blockName .. '-' .. parsedBarcode.slide
 
    -- Use blockName as blockKey
    local blockKey = mapBlockKey({block = blockName})
-
-   -- Get accession ID from OBR.18
-   local accessionId = msg.OBR[18]:S()
 
    -- Handle order control for cancellations
    if orderControl == "CA" then
