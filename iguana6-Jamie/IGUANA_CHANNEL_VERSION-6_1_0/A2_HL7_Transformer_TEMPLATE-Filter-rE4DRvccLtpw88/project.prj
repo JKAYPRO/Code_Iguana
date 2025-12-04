@@ -1,0 +1,24 @@
+{
+    "LocalDependencies": [
+        "mapBlockKey.lua",
+        "parseOML.lua",
+        "parseORU.lua"
+    ],
+    "LuaDependencies": [
+        "barcodeUtils",
+        "date.getTimezoneOffset",
+        "date.parse",
+        "globalConfig",
+        "hl7.delimiter.fix",
+        "hl7.delimiter.unescape"
+    ],
+    "OtherDependencies": [
+        "Delta_09092024.vmd"
+    ],
+    "timestamp": "1732079396",
+    "version_info": {
+        "build": 0,
+        "major": 6,
+        "minor": 0
+    }
+}

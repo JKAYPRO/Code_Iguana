@@ -1,0 +1,17 @@
+{
+    "LocalDependencies": [],
+    "LuaDependencies": [
+        "barcodeUtils",
+        "date.getTimezoneOffset",
+        "globalConfig"
+    ],
+    "OtherDependencies": [
+        "TCH_OML_06032024.vmd"
+    ],
+    "timestamp": "1760374258",
+    "version_info": {
+        "build": 0,
+        "major": 6,
+        "minor": 0
+    }
+}

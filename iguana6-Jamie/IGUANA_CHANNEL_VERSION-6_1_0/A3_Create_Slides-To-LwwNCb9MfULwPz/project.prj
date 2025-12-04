@@ -1,0 +1,30 @@
+{
+    "LocalDependencies": [
+        "addSecondaryAssignees.lua",
+        "caseUpdate.lua",
+        "checkCaseStatus.lua",
+        "checkOrphanedParts.lua",
+        "checkSlides.lua",
+        "delete.lua",
+        "deleteCase.lua",
+        "hasParts.lua",
+        "hasSlides.lua",
+        "mapCaseDetails.lua",
+        "mapCaseParts.lua",
+        "mapImages.lua",
+        "mapSlides.lua",
+        "upsert.lua"
+    ],
+    "LuaDependencies": [
+        "concentriqAPI",
+        "retry",
+        "tableUtils"
+    ],
+    "OtherDependencies": [],
+    "timestamp": "1762452862",
+    "version_info": {
+        "build": 0,
+        "major": 6,
+        "minor": 0
+    }
+}

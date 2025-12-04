@@ -1,0 +1,21 @@
+{
+    "LocalDependencies": [
+        "mapOutboundMessage.lua"
+    ],
+    "LuaDependencies": [
+        "concentriqAPI",
+        "date.parse",
+        "globalConfig",
+        "retry",
+        "tableUtils"
+    ],
+    "OtherDependencies": [
+        "Powerpath_ORU_R01.vmd"
+    ],
+    "timestamp": "1732079396",
+    "version_info": {
+        "build": 0,
+        "major": 6,
+        "minor": 0
+    }
+}

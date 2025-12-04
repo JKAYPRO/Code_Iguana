@@ -1,0 +1,30 @@
+<channel
+   name="Barcode Parser"
+   guid="CB6784B107FE394B271F928EBAB90C55"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="true">
+   <to_channel>
+      <dequeue_list>
+         <dequeue
+            source_name="B1_UpdateImage Webhook"
+            dequeue_guid="CF4F63C5A2C284008C4EBF8830C7050D"/>
+      </dequeue_list>
+   </to_channel>
+   <from_channel/>
+   <message_filter
+      filter_after_logging="false"
+      log_pre_post_filter_message="true"
+      keep_vmd_updated="false"
+      original_vmd_path=""
+      filter_vmd_path=""
+      transformation_mode="0"
+      scripted_transformation_configuration_name="default"
+      error_handling="0"
+      use_translator_filter="true"
+      translator_guid="BCO_Template-Filter-geYlR2kg1rJhfV"
+      translator_commit_id="d4910fec66d95dfb7c86d5ef82b51d329cac073e"
+      translator_commit_comment="Initial configuration">
+   </message_filter>
+</channel>

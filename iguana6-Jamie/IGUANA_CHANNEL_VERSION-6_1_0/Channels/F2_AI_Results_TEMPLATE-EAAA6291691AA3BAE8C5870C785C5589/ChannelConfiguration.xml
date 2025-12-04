@@ -1,0 +1,30 @@
+<channel
+   name="F2_AI Results TEMPLATE"
+   guid="EAAA6291691AA3BAE8C5870C785C5589"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="true">
+   <to_channel>
+      <dequeue_list>
+         <dequeue
+            source_name="F1_Case Complete Webhook"
+            dequeue_guid="D397FFBAA8AB02AB003DC76F76E065E2"/>
+      </dequeue_list>
+   </to_channel>
+   <from_channel/>
+   <message_filter
+      filter_after_logging="false"
+      log_pre_post_filter_message="true"
+      keep_vmd_updated="false"
+      original_vmd_path=""
+      filter_vmd_path=""
+      transformation_mode="0"
+      scripted_transformation_configuration_name="default"
+      error_handling="0"
+      use_translator_filter="true"
+      translator_guid="F2_AI_Results_TEMPLATE-Filter-AqaBquspA1uUwP"
+      translator_commit_id="ad43546847d255f4e53d07229f39cec586082547"
+      translator_commit_comment="Merged changes from Cellnetix">
+   </message_filter>
+</channel>

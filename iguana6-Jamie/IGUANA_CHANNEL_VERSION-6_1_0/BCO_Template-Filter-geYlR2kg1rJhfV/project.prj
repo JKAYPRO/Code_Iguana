@@ -1,0 +1,18 @@
+{
+    "LocalDependencies": [
+        "mapAccessionId.lua",
+        "mapBlockKey.lua",
+        "parseImage.lua"
+    ],
+    "LuaDependencies": [
+        "barcodeUtils",
+        "globalConfig"
+    ],
+    "OtherDependencies": [],
+    "timestamp": "1725034459",
+    "version_info": {
+        "build": 0,
+        "major": 6,
+        "minor": 0
+    }
+}

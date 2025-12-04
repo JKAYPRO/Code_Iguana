@@ -1,0 +1,28 @@
+<channel
+   name="B3_Update Image"
+   guid="B32AFF0C837F80D398912F9946B1EB95"
+   description=""
+   start_automatically="true"
+   logging_level="1"
+   use_message_filter="true">
+   <to_mapper
+      guid="B3_Update_Image-To-s6vLqHx81iSrl1"
+      commit_id="62ef3e51ea4784eaaa58e0c0d0f61208f5e49627"
+      commit_comment="Skip images with empty string barcode values">
+   </to_mapper>
+   <from_channel/>
+   <message_filter
+      filter_after_logging="true"
+      log_pre_post_filter_message="true"
+      keep_vmd_updated="false"
+      original_vmd_path=""
+      filter_vmd_path=""
+      transformation_mode="0"
+      scripted_transformation_configuration_name="default"
+      error_handling="0"
+      use_translator_filter="true"
+      translator_guid="B3_Update_Image-Filter-r0oXWpGSQ9ogHR"
+      translator_commit_id="d0af7a0eda8573a0873d86e18f7b9782bb81a4cd"
+      translator_commit_comment="Improve json validation">
+   </message_filter>
+</channel>

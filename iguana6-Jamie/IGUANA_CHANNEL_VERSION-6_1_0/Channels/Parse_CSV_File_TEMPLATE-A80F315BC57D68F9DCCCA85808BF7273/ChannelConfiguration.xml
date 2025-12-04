@@ -1,0 +1,25 @@
+<channel
+   name="Parse CSV File TEMPLATE"
+   guid="A80F315BC57D68F9DCCCA85808BF7273"
+   description=""
+   start_automatically="true"
+   logging_level="1"
+   use_message_filter="true">
+   <to_channel>
+   </to_channel>
+   <from_channel/>
+   <message_filter
+      filter_after_logging="false"
+      log_pre_post_filter_message="true"
+      keep_vmd_updated="false"
+      original_vmd_path=""
+      filter_vmd_path=""
+      transformation_mode="0"
+      scripted_transformation_configuration_name="default"
+      error_handling="0"
+      use_translator_filter="true"
+      translator_guid="Parse_CSV_File_TEMPLATE-Filter-4kwp97VswIfWmm"
+      translator_commit_id="9b449a0e1a2edfdc243658b7cf2a16058d10159a"
+      translator_commit_comment="Trim trailing empty rows">
+   </message_filter>
+</channel>

@@ -1,0 +1,16 @@
+<channel
+   name="E1_Delete Slide Webhook"
+   guid="230E23EB82DE93D686CDE514DA3EAB7E"
+   description=""
+   start_automatically="false"
+   logging_level="1"
+   use_message_filter="false">
+   <to_channel>
+   </to_channel>
+   <from_http
+      type="mapper"
+      guid="E1_Delete_Slide_Webhook-FromHTTP-qLwpx1BmCXaJ56"
+      commit_id="5e2faac68cc5191499442ed983f3093f3b09fe5e"
+      commit_comment="Initial Commit"
+      mapper_url_path="deleteSlide"/>
+</channel>
