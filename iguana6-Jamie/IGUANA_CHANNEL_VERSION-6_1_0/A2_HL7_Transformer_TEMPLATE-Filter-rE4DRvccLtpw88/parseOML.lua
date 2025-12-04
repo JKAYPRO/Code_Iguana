@@ -6,6 +6,17 @@ hl7.unescape = require 'hl7.delimiter.unescape'
 require 'date.parse'
 
 function parseOML(msg)
+   -- Check order control early
+   local orderControl = msg.ORC[1]:S()
+
+   -- Skip NW orders that don't have a barcode (no SPM segment or empty SPM.2)
+   if orderControl == "NW" then
+      if not msg.SPM or not msg.SPM[1] or not msg.SPM[1][2] or msg.SPM[1][2]:S() == "" then
+         iguana.logInfo('Skipping NW order without barcode/SPM segment: ' .. msg.OBR[18]:S())
+         return nil
+      end
+   end
+
    -- Get accession date from ORC.15
    local accDateStr = msg.ORC[15]:S()
    local accDate = accDateStr ~= "" and accDateStr or os.date('%Y%m%d%H%M%S')
@@ -34,7 +45,6 @@ function parseOML(msg)
    local accessionId = msg.OBR[18]:S()
 
    -- Handle order control for cancellations
-   local orderControl = msg.ORC[1]:S()
    if orderControl == "CA" then
       return {
          messageType = 'cancel',
