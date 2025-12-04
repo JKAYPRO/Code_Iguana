@@ -74,7 +74,7 @@ function parseOML(msg)
       return nil
    end
 
-   -- Get slide ID from SPM.2 (format: "SJ18-25;1")
+   -- Get slide ID from SPM.2 (format: "A70-25;6")
    local slideId = msg.SPM[1][2]:S()
 
    if slideId == "" then
@@ -82,12 +82,13 @@ function parseOML(msg)
       return nil
    end
 
-   -- Get block from OBR.25
-   local block = msg.OBR[25]:S()
-   local blockName = block ~= "" and block or "A"
+   -- Extract part and block from SPM.4
+   local blockName = msg.SPM[1][4][1]:S()  -- SPM.4.1 = "C"
+   local partName = msg.SPM[1][4][4]:S()   -- SPM.4.4 = "3"
 
-   -- Default part to "1"
-   local partName = "1"
+   -- Set defaults if empty
+   blockName = blockName ~= "" and blockName or "A"
+   partName = partName ~= "" and partName or "1"
 
    -- Parse the slide ID using barcodeUtils
    local parsedBarcode = bu.parseBarcode(slideId, gc.BARCODE_FORMAT, gc.BARCODE_COMPONENTS)
@@ -98,11 +99,11 @@ function parseOML(msg)
       return nil
    end
 
-   -- Construct barcode: accessionId-block-slide (e.g., "SJ18-25-A-1")
-   local barcode = parsedBarcode.accessionId .. '-' .. blockName .. '-' .. parsedBarcode.slide
+   -- Construct blockKey as part-block (e.g., "3-C")
+   local blockKey = partName .. '-' .. blockName
 
-   -- Use blockName and partName as blockKey
-   local blockKey = mapBlockKey({part = partName, block = blockName})
+   -- Construct barcode: accessionId-blockKey-slide (e.g., "A70-25-3-C-6")
+   local barcode = parsedBarcode.accessionId .. '-' .. blockKey .. '-' .. parsedBarcode.slide
 
    -- Handle order control for cancellations
    if orderControl == "CA" then
