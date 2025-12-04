@@ -91,32 +91,19 @@ function parseOML(msg)
       return nil
    end
 
-   -- Handle CA (cancellation) - process early as it may not have SPM.4
+   -- Handle CA (cancellation) - delete the entire case
    if orderControl == "CA" then
-      iguana.logInfo('Processing CA (cancel) order for: ' .. accessionId)
-
-      -- Get block from OBR.25 for CA messages (SPM.4 may not exist)
-      local blockCA = msg.OBR[25]:S()
-      local blockNameCA = blockCA ~= "" and blockCA or "A"
-
-      -- Default part to "1" for CA messages
-      local partNameCA = "1"
-
-      -- Construct blockKey and barcode for cancellation
-      local blockKeyCA = partNameCA .. '-' .. blockNameCA
-      local barcodeCA = parsedBarcode.accessionId .. '-' .. blockKeyCA .. '-' .. parsedBarcode.slide
+      iguana.logInfo('Processing CA (cancel) order for: ' .. accessionId .. ' - Deleting entire case')
 
       return {
-         messageType = 'delete',  -- Use 'delete' to trigger slide deletion
+         messageType = 'deleteCase',  -- Delete the entire case
          options = {
-            preventDeletionOfSlidesWithImages = true,  -- Preserve slides with images
             logLevel = 'logInfo'
          },
          case = {
             accessionId = accessionId,
             labSiteId = gc.LAB_SITE,
-            patientDob = nil,  -- Not needed for deletion
-            slides = {{ barcode = barcodeCA }}  -- Specify slide to delete
+            patientDob = nil  -- Not used for deletion lookup
          }
       }
    end
