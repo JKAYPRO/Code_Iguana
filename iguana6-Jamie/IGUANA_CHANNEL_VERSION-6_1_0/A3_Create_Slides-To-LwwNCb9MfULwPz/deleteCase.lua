@@ -2,23 +2,30 @@
 local api = require 'concentriqAPI'
 
 function deleteCase(msg)
-   LOG_LEVEL = (msg.options.logLevels and msg.options.logLevels.deleteCase) or 'logError' 
-   
+   LOG_LEVEL = (msg.options.logLevels and msg.options.logLevels.deleteCase) or 'logError'
+
    ----------------------------------------------------------------------------
    -- CASE DETAILS CHECK
    ----------------------------------------------------------------------------
+   -- Build the query conditionally to avoid issues with null/missing patientDob
+   local whereClause = {
+      accessionId = msg.case.accessionId,
+      labSiteId = msg.case.labSiteId
+   }
+
+   -- Only include patientDob in the query if it's actually provided
+   if msg.case.patientDob and msg.case.patientDob ~= "" then
+      whereClause.patientDob = msg.case.patientDob
+   end
+
    local caseDetailsQuery = json.serialize{
       data = {
          eager = {
-            ["$where"] = { 
-               accessionId = msg.case.accessionId,
-               labSiteId = msg.case.labSiteId,
-               patientDob = msg.case.patientDob
-            }
+            ["$where"] = whereClause
          }
       }
    }
-   caseDetails = api.getCaseDetails(caseDetailsQuery)   
+   caseDetails = api.getCaseDetails(caseDetailsQuery)
 
    -- Delete the case
    if caseDetails then
