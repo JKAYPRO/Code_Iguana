@@ -14,14 +14,21 @@ function delete(msg)
    ----------------------------------------------------------------------------
    -- CASE DETAILS CHECK
    ----------------------------------------------------------------------------
+   -- Build the query conditionally to avoid issues with null/missing patientDob
+   local whereClause = {
+      accessionId = msg.case.accessionId,
+      labSiteId = msg.case.labSiteId
+   }
+
+   -- Only include patientDob in the query if it's actually provided
+   if msg.case.patientDob and msg.case.patientDob ~= "" then
+      whereClause.patientDob = msg.case.patientDob
+   end
+
    local caseDetailsQuery = json.serialize{
       data = {
          eager = {
-            ["$where"] = { 
-               accessionId = msg.case.accessionId,
-               labSiteId = msg.case.labSiteId,
-               patientDob = msg.case.patientDob
-            }
+            ["$where"] = whereClause
          }
       }
    }
